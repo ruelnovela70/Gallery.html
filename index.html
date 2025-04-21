@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Security</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; 
+            margin: 0;
+        }
+
+        .progress-container {
+            width: 80px;
+            height: 30px;
+            background-color: gray;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #0000FF;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00FFFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar">1%</div>
+</div>
+
+<div class="popup" id="welcomePopup">
+    <p>Welcome to our website!</p>
+    <button class="close-btn" onclick="closePopup()">Proceed</button>
+</div>
+
+<script>
+    let progress = 0;
+    let progressBar = document.getElementById('progressBar');
+    let welcomePopup = document.getElementById('welcomePopup');
+
+    function updateProgress() {
+        if (progress < 100) {
+            progress += 1;
+            progressBar.style.width = progress + '%';
+            progressBar.innerHTML = progress + '%';
+            setTimeout(updateProgress, 100);
+        } else {
+            showPopup();
+        }
+    }
+
+    function showPopup() {
+        welcomePopup.style.display = 'block';
+    }
+
+    function closePopup() {
+        welcomePopup.style.display = 'none';
+    window.location.href = "file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/LOGIN.html";
+        window.location.href = "Login.html";
+    }
+
+    window.onload = updateProgress;
+</script>
+
+</body>
+</html>
