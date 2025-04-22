@@ -2,23 +2,116 @@
 <html>
 <head>
 <title>My Gallery</title>
+<style>
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: maroon;
+  background-color: black;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%; 
+  max-width: 1200px;
+}
+
+.gallery-item {
+  width: 350px;
+  margin-bottom: 20px;
+  
+}
+
+img, video {
+  width: 100%;
+  height: auto;
+  display: block;
+
+}
+
+.gallery-item img, .gallery-item video {
+  display: none;
+}
+
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%; 
+  max-width: 1200px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+
+}
+
+.buttons button {
+  padding: 10px 20px;
+  color: maroon;
+  background-color: gray;
+}
+</style>
 </head>
 <body>
-<h1><strong><center>MY GALLERY</center></strong></h1>
-<div>
-    
-  <img  width="350" height="150" src="Screenshot_20250417-100220.jpg" alt="Image 1">
-  <img width="350" height="150"src="Screenshot_20250417-100233.jpg" alt="Image 2">
-  <video width="350" height="200" controls>
-  <source src="lv_7490455882514402621_20250417095718.mp4" type="video/mp4">
-  <source src="myvideo.webm" type="video/webm">
-</video>
-  <img  width="350" height="150"src="Screenshot_20250417-100259.jpg" alt="Image 3">
-  <img  width="350" height="250"src="Screenshot_20250321-114124_1.png" alt="Image 4">
-  <video width="350" height="200" controls>
-  <source src="lv_7351941714661100807_20250416152235.mp4" type="video/mp4">
-  <source src="myvideo.webm" type="video/webm">
-</video>
+<h1><strong>MY GALLERY</strong></h1>
+
+<div class="buttons">
+    <button onclick="showContent('images')">Images</button>
+    <button onclick="showContent('videos')">Videos</button>
 </div>
+
+<div class="content-container">
+    <div class="gallery-item">
+        <img src="Screenshot_20250417-100220.jpg" alt="Image 1">
+    </div>
+    <div class="gallery-item">
+        <img src="Screenshot_20250417-100233.jpg" alt="Image 2">
+    </div>
+    <div class="gallery-item">
+        <video controls>
+            <source src="lv_7490455882514402621_20250417095718.mp4" type="video/mp4">
+            <source src="videos/myvideo.webm" type="video/webm">
+        </video>
+    </div>
+    <div class="gallery-item">
+        <img src="Screenshot_20250417-100259.jpg" alt="Image 3">
+    </div>
+    <div class="gallery-item">
+        <img src="Screenshot_20250321-114124_1.png" alt="Image 4">
+    </div>
+    <div class="gallery-item">
+        <video controls>
+            <source src="lv_7351941714661100807_20250416152235.mp4" type="video/mp4">
+            <source src="videos/myvideo.webm" type="video/webm">
+        </video>
+    </div>
+</div>
+
+
+<script>
+function showContent(type) {
+  const items = document.querySelectorAll('.gallery-item');
+  items.forEach(item => {
+    const img = item.querySelector('img');
+    const video = item.querySelector('video');
+    if (type === 'images') {
+      if(img){img.style.display = 'block';}
+      if(video){video.style.display = 'none';}
+    } else if (type === 'videos') {
+      if(img){img.style.display = 'none';}
+      if(video){video.style.display = 'block';}
+    }
+  });
+}
+</script>
 </body>
-</html>
+            </html>
+            
